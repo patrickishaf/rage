@@ -18,7 +18,6 @@ Fields:
 */
 type ValidationResult struct {
 	IsValid bool
-	Error   error
 	Reasons []ValidationReason
 }
 
