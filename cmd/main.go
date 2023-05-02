@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	schema := validate.NewSchema().AddField("name", reflect.TypeOf("name")).AddField("age", reflect.TypeOf(1))
+	schema := validate.NewSchema().AddField("name", reflect.TypeOf("name")).SetIsRequired(true).AddField("age", reflect.TypeOf(1)).SetIsRequired(true)
 
 	type person struct {
 		name string
