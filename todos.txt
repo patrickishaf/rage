@@ -1,0 +1,1 @@
+TODO: I can use the same function "max" for max length and max value. If it's a numeric type, it will set max value but if it's not, it'll set max length. It's just that the API might be a little confusing
