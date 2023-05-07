@@ -3,11 +3,11 @@ package main
 import (
 	"reflect"
 
-	"github.com/patrickishaf/rage/pkg/validate"
+	rage "github.com/patrickishaf/rage/pkg"
 )
 
 func main() {
-	schema := validate.NewSchema().AddField("name", reflect.TypeOf("name")).SetIsRequired(true).AddField("age", reflect.TypeOf(1)).SetIsRequired(true)
+	schema := rage.NewSchema().AddField("name", reflect.TypeOf("name")).SetIsRequired(true).AddField("age", reflect.TypeOf(1)).SetIsRequired(true)
 
 	type person struct {
 		name string

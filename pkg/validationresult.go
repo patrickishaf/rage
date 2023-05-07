@@ -1,4 +1,4 @@
-package validate
+package rage
 
 type ValidationReason struct {
 	Value   string
