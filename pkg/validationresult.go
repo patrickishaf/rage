@@ -7,8 +7,8 @@ type ValidationReason struct {
 
 /*
 When you call the Validate function, an object like this will be returned.
-This struct will contain details of the error that made an object to fail the validation
-test (if the object fails)
+This struct will contain details of the error that made an object to fail
+the validation test (if the object fails)
 
 Fields:
 
@@ -21,6 +21,9 @@ type ValidationResult struct {
 	Reasons []ValidationReason
 }
 
-func ComposeReason() *ValidationReason {
-	return &ValidationReason{}
+func ComposeReason(value string, message string) *ValidationReason {
+	return &ValidationReason{
+		Value:   value,
+		Message: message,
+	}
 }
