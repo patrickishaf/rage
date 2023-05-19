@@ -1,8 +1,6 @@
 package rage
 
 import (
-	"fmt"
-	"reflect"
 	"testing"
 )
 
@@ -21,7 +19,6 @@ var testCases = []composeReasonTestCase{
 func TestComposeReason(t *testing.T) {
 	for _, testCase := range testCases {
 		result := ComposeReason(testCase.v, testCase.m)
-		fmt.Println(reflect.TypeOf(result))
 		if result.Value != testCase.vExpected {
 			t.Errorf("expected result.Value to be %s but got %s", testCase.vExpected, result.Value)
 		}

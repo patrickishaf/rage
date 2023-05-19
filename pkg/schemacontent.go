@@ -12,6 +12,11 @@ type SchemaContent struct {
 // to the schema. that object will contain the AddField method and the other methods for manipulating
 // the field
 func (s *SchemaContent) addField(fieldName string, dataType reflect.Type) *schemaField {
+	for _, field := range s.fields {
+		if field.name == fieldName {
+			return &s.fields[len(s.fields)-1]
+		}
+	}
 	field := &schemaField{
 		name:     fieldName,
 		dataType: dataType.Name(),

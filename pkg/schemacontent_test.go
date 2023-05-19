@@ -28,7 +28,7 @@ func TestAddFieldRejectsDuplicateFields(t *testing.T) {
 	counter := 0
 
 	for _, field := range newSchema.content.fields {
-		if field.name == "hi" && field.dataType == "string" {
+		if field.name == "hi" {
 			counter++
 		}
 	}

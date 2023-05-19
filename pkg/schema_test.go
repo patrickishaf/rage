@@ -1,12 +1,11 @@
 package rage
 
 import (
-	"fmt"
 	"reflect"
 	"testing"
 )
 
-func TestNewSchemaCreatesAnObjectOfTypeSchema(t *testing.T) {
+func TestNewSchema(t *testing.T) {
 	e := NewSchema()
 	a := &Schema{
 		content: &SchemaContent{
@@ -17,6 +16,8 @@ func TestNewSchemaCreatesAnObjectOfTypeSchema(t *testing.T) {
 		t.Error("New Schema does not create an object of type &Schema")
 	}
 }
+
+func TestAddField(t *testing.T) {}
 
 func TestValidate(t *testing.T) {
 	schema := NewSchema().AddField("name", reflect.TypeOf(12.56)).SetMinLength(45).AddField("age", reflect.TypeOf(1)).SetMinValue(0).SetMaxValue(100)
@@ -37,9 +38,6 @@ func TestValidate(t *testing.T) {
 
 	peteResult := schema.Validate(pete)
 	goodnessResult := schema.Validate(goodness)
-
-	fmt.Println(peteResult)
-	fmt.Println(goodnessResult)
 
 	if peteResult.IsValid == false {
 		t.Error("the object is not valid")

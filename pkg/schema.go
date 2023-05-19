@@ -22,7 +22,6 @@ func NewSchema() *Schema {
 TODO: Implement this function to return a validation result depending on the status of the object
 */
 func (s *Schema) Validate(obj interface{}) ValidationResult {
-	fmt.Println("the validate function is running")
 	result := ValidationResult{}
 	isValid := true
 	for _, field := range s.content.fields {
@@ -53,7 +52,7 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 			If the value of the error is not nil, the object you are validating has no field with the current field name
 			If the value of [value] is not nil, the field exists. This goes without saying.
 		*/
-		value, err := getValueOfFieldWithName(obj, s.content.fields[len(s.content.fields)-1].name)
+		_, err := getValueOfFieldWithName(obj, s.content.fields[len(s.content.fields)-1].name)
 		if err != nil {
 			isValid = false
 			result.Reasons = append(result.Reasons, ValidationReason{
@@ -63,8 +62,8 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 			continue
 		}
 		// fmt.Println("dataTypeOfSchema => " + dataTypeOfSchema + "\nvalue of field with name " + field.name + " => ")
-		fmt.Println(value)
-		fmt.Println("")
+		// fmt.Println(value)
+		// fmt.Println("")
 		// If thid doesn't work I might have to convert all numeric types to float64 and store them like that
 		if fieldNameIsNumericType(field.name) {
 			fmt.Println("the value is a numeric type")
