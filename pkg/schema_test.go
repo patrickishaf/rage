@@ -6,6 +6,18 @@ import (
 	"testing"
 )
 
+func TestNewSchemaCreatesAnObjectOfTypeSchema(t *testing.T) {
+	e := NewSchema()
+	a := &Schema{
+		content: &SchemaContent{
+			fields: []schemaField{},
+		},
+	}
+	if reflect.TypeOf(e) != reflect.TypeOf(a) {
+		t.Error("New Schema does not create an object of type &Schema")
+	}
+}
+
 func TestValidate(t *testing.T) {
 	schema := NewSchema().AddField("name", reflect.TypeOf(12.56)).SetMinLength(45).AddField("age", reflect.TypeOf(1)).SetMinValue(0).SetMaxValue(100)
 

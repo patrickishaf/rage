@@ -19,3 +19,5 @@ func (s *SchemaContent) addField(fieldName string, dataType reflect.Type) *schem
 	s.fields = append(s.fields, *field)
 	return field
 }
+
+// func (s *SchemaContent) setName(name string) *schemaField {}

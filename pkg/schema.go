@@ -9,14 +9,6 @@ type Schema struct {
 	content *SchemaContent
 }
 
-type schemaField struct {
-	name       string
-	dataType   string
-	isRequired bool
-	min        int
-	max        int
-}
-
 func NewSchema() *Schema {
 	schemaContent := &SchemaContent{
 		fields: []schemaField{},
@@ -120,7 +112,7 @@ func (s *Schema) SetIsRequired(isRequired bool) *Schema {
 	return s
 }
 
-func (s *Schema) SetMinValue(value int) *Schema {
+func (s *Schema) SetMinValue(value float64) *Schema {
 	if len(s.content.fields) == 0 {
 		s.content.fields = append(s.content.fields, schemaField{})
 	}
@@ -131,7 +123,7 @@ func (s *Schema) SetMinValue(value int) *Schema {
 	return s
 }
 
-func (s *Schema) SetMaxValue(value int) *Schema {
+func (s *Schema) SetMaxValue(value float64) *Schema {
 	if len(s.content.fields) == 0 {
 		s.content.fields = append(s.content.fields, schemaField{})
 	}
@@ -152,7 +144,7 @@ func (s *Schema) SetMinLength(value int) *Schema {
 		field. this is because numeric fields don't have length properties
 	*/
 	if !fieldNameIsNumericType(s.content.fields[len(s.content.fields)-1].dataType) {
-		s.content.fields[len(s.content.fields)-1].min = value
+		s.content.fields[len(s.content.fields)-1].minLength = value
 	}
 	return s
 }
@@ -167,7 +159,7 @@ func (s *Schema) SetMaxLength(value int) *Schema {
 		field. this is because numeric fields don't have length properties
 	*/
 	if !fieldNameIsNumericType(s.content.fields[len(s.content.fields)-1].dataType) {
-		s.content.fields[len(s.content.fields)-1].max = value
+		s.content.fields[len(s.content.fields)-1].maxLength = value
 	}
 	return s
 }
