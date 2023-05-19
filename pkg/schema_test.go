@@ -17,7 +17,13 @@ func TestNewSchema(t *testing.T) {
 	}
 }
 
-func TestAddField(t *testing.T) {}
+func TestAddField(t *testing.T) {
+	testSchema := NewSchema().AddField("namawa", reflect.TypeOf(12.56))
+
+	if testSchema.content.fields[0].name != "namawa" && testSchema.content.fields[0].dataType != "float64" {
+		t.Errorf("failed to add field properly. \nexpected name: 'namawa' ----- actual name: %s \nexpected dataType: 'float64' ----- actual dataType: %s", testSchema.content.fields[0].name, testSchema.content.fields[0].dataType)
+	}
+}
 
 func TestValidate(t *testing.T) {
 	schema := NewSchema().AddField("name", reflect.TypeOf(12.56)).SetMinLength(45).AddField("age", reflect.TypeOf(1)).SetMinValue(0).SetMaxValue(100)
@@ -54,20 +60,35 @@ func TestValidate(t *testing.T) {
 }
 
 func TestSetMaxLength(t *testing.T) {
-	// personSchema := NewSchema().AddField("age", reflect.TypeOf(23)).SetIsRequired(true).SetMaxValue(200)
+	s := NewSchema().AddField("name", reflect.TypeOf("grodd")).SetMaxLength(100)
 
-	// person := struct{ age int }{age: 201}
-
-	// vResult := personSchema.Validate(person)
-	// fmt.Println(vResult)
-
-	// if vResult.IsValid {
-	// 	t.Error("the max value validation does not work")
-	// }
+	if s.content.fields[0].maxLength != 100 {
+		t.Errorf("failed to set max length. expected %d but got %d", 100, s.content.fields[0].maxLength)
+	}
 }
 
-func TestSetMinLength(t *testing.T) {}
+func TestSetMinLength(t *testing.T) {
+	s := NewSchema().AddField("name", reflect.TypeOf("grodd")).SetMinLength(10)
 
-func TestSetMaxValue(t *testing.T) {}
+	if s.content.fields[0].minLength != 10 {
+		t.Errorf("failed to set min length. expected %d but got %d", 100, s.content.fields[0].minLength)
+	}
+}
 
-func TestSetMinValue(t *testing.T) {}
+func TestSetMaxValue(t *testing.T) {
+	maxVal := 100.74
+	s := NewSchema().AddField("balance", reflect.TypeOf(123.456)).SetMaxValue(maxVal)
+
+	if s.content.fields[0].max != maxVal {
+		t.Errorf("failed to set max length. expected %f but got %f", maxVal, s.content.fields[0].max)
+	}
+}
+
+func TestSetMinValue(t *testing.T) {
+	minVal := 10.75
+	s := NewSchema().AddField("balance", reflect.TypeOf(123.456)).SetMinValue(minVal)
+
+	if s.content.fields[0].min != minVal {
+		t.Errorf("failed to set max length. expected %f but got %f", minVal, s.content.fields[0].max)
+	}
+}
