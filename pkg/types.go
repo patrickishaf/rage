@@ -1,0 +1,18 @@
+package rage
+
+const Bool string = "bool"
+const String string = "string"
+const Int string = "int"
+const Int8 string = "int8"
+const Int16 string = "int16"
+const Int32 string = "int32"
+const Int64 string = "int64"
+const Uint string = "uint"
+const Uint8 string = "uint8"
+const Uint16 string = "uint16"
+const Uint32 string = "uint32"
+const Uint64 string = "uint64"
+const Byte string = "byte"
+const Rune string = "rune"
+const Float32 string = "float32"
+const Float64 string = "float64"
