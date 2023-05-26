@@ -17,10 +17,10 @@ func getValueOfFieldWithName(p interface{}, fieldName string) (interface{}, erro
 }
 
 func isNumericType(obj interface{}) bool {
-	return (reflect.TypeOf(obj).Name() == "int" || reflect.TypeOf(obj).Name() == "uint" || reflect.TypeOf(obj).Name() == "int8" || reflect.TypeOf(obj).Name() == "uint8" || reflect.TypeOf(obj).Name() == "int16" || reflect.TypeOf(obj).Name() == "uint16" || reflect.TypeOf(obj).Name() == "int32" || reflect.TypeOf(obj).Name() == "uint32" || reflect.TypeOf(obj).Name() == "int64" || reflect.TypeOf(obj).Name() == "uint64" || reflect.TypeOf(obj).Name() == "float32" || reflect.TypeOf(obj).Name() == "float64" || reflect.TypeOf(obj).Name() == "complex64" || reflect.TypeOf(obj).Name() == "complex128")
+	return (reflect.TypeOf(obj).Name() == Int || reflect.TypeOf(obj).Name() == Uint || reflect.TypeOf(obj).Name() == Int8 || reflect.TypeOf(obj).Name() == Uint8 || reflect.TypeOf(obj).Name() == Int16 || reflect.TypeOf(obj).Name() == Uint16 || reflect.TypeOf(obj).Name() == Int32 || reflect.TypeOf(obj).Name() == Uint32 || reflect.TypeOf(obj).Name() == Int64 || reflect.TypeOf(obj).Name() == Uint64 || reflect.TypeOf(obj).Name() == Float32 || reflect.TypeOf(obj).Name() == Float64)
 }
 
 func fieldNameIsNumericType(fieldName string) bool {
-	return (fieldName == "int" || fieldName == "uint" || fieldName == "int8" || fieldName == "uint8" || fieldName == "int16" || fieldName == "uint16" || fieldName == "int32" ||
-		fieldName == "uint32" || fieldName == "int64" || fieldName == "uint64" || fieldName == "float32" || fieldName == "float64" || fieldName == "complex64" || fieldName == "complex128")
+	return (fieldName == Int || fieldName == Uint || fieldName == Int8 || fieldName == Uint8 || fieldName == Int16 || fieldName == Uint16 || fieldName == Int32 ||
+		fieldName == Uint32 || fieldName == Int64 || fieldName == Uint64 || fieldName == Float32 || fieldName == Float64)
 }

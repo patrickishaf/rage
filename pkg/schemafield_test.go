@@ -17,7 +17,7 @@ func TestSetDataType(t *testing.T) {
 	field := schemaField{}
 	field.setDataType(reflect.TypeOf("Myron").String())
 
-	if field.dataType != "string" {
+	if field.dataType != String {
 		t.Errorf("Does not set data type accurately. Expected 'string' but got '%s'", field.dataType)
 	}
 }
