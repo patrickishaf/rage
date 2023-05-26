@@ -2,7 +2,7 @@ package rage
 
 type schemaField struct {
 	name       string
-	dataType   string
+	dataType   FieldType
 	isRequired bool
 	min        float64
 	max        float64
@@ -14,7 +14,7 @@ func (s *schemaField) setName(name string) {
 	s.name = name
 }
 
-func (s *schemaField) setDataType(dataType string) {
+func (s *schemaField) setDataType(dataType FieldType) {
 	s.dataType = dataType
 }
 

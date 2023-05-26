@@ -65,7 +65,7 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 		// fmt.Println(value)
 		// fmt.Println("")
 		// If thid doesn't work I might have to convert all numeric types to float64 and store them like that
-		if fieldNameIsNumericType(field.name) {
+		if fieldNameIsNumericType(field.dataType) {
 			fmt.Println("the value is a numeric type")
 			// if floatValue, err := value.(float64); !err {
 			// 	fmt.Println("the value is not a float type")
@@ -82,7 +82,7 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 	return result
 }
 
-func (s *Schema) AddField(fieldName string, dataType reflect.Type) *Schema {
+func (s *Schema) AddField(fieldName string, dataType FieldType) *Schema {
 	s.content.addField(fieldName, dataType)
 	return s
 }
@@ -95,11 +95,11 @@ func (s *Schema) SetName(name string) *Schema {
 	return s
 }
 
-func (s *Schema) SetDataType(dataType reflect.Type) *Schema {
+func (s *Schema) SetDataType(dataType FieldType) *Schema {
 	if len(s.content.fields) == 0 {
 		s.content.fields = append(s.content.fields, schemaField{})
 	}
-	s.content.fields[len(s.content.fields)-1].dataType = dataType.Name()
+	s.content.fields[len(s.content.fields)-1].dataType = dataType
 	return s
 }
 
@@ -116,7 +116,7 @@ func (s *Schema) SetMinValue(value float64) *Schema {
 		s.content.fields = append(s.content.fields, schemaField{})
 	}
 	currentField := &(s.content.fields[len(s.content.fields)-1])
-	if fieldNameIsNumericType((*currentField).name) {
+	if fieldNameIsNumericType((*currentField).dataType) {
 		(*currentField).min = value
 	}
 	return s
@@ -127,7 +127,7 @@ func (s *Schema) SetMaxValue(value float64) *Schema {
 		s.content.fields = append(s.content.fields, schemaField{})
 	}
 	currentField := &(s.content.fields[len(s.content.fields)-1])
-	if fieldNameIsNumericType((*currentField).name) {
+	if fieldNameIsNumericType((*currentField).dataType) {
 		(*currentField).max = value
 	}
 	return s

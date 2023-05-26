@@ -1,7 +1,6 @@
 package rage
 
 import (
-	"reflect"
 	"testing"
 )
 
@@ -15,7 +14,7 @@ func TestSetName(t *testing.T) {
 }
 func TestSetDataType(t *testing.T) {
 	field := schemaField{}
-	field.setDataType(reflect.TypeOf("Myron").String())
+	field.setDataType(String)
 
 	if field.dataType != String {
 		t.Errorf("Does not set data type accurately. Expected 'string' but got '%s'", field.dataType)

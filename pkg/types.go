@@ -1,18 +1,22 @@
 package rage
 
-const Bool string = "bool"
-const String string = "string"
-const Int string = "int"
-const Int8 string = "int8"
-const Int16 string = "int16"
-const Int32 string = "int32"
-const Int64 string = "int64"
-const Uint string = "uint"
-const Uint8 string = "uint8"
-const Uint16 string = "uint16"
-const Uint32 string = "uint32"
-const Uint64 string = "uint64"
-const Byte string = "byte"
-const Rune string = "rune"
-const Float32 string = "float32"
-const Float64 string = "float64"
+type FieldType string
+
+const (
+	Bool    FieldType = "bool"
+	String  FieldType = "string"
+	Int     FieldType = "int"
+	Int8    FieldType = "int8"
+	Int16   FieldType = "int16"
+	Int32   FieldType = "int32"
+	Int64   FieldType = "int64"
+	Uint    FieldType = "uint"
+	Uint8   FieldType = "uint8"
+	Uint16  FieldType = "uint16"
+	Uint32  FieldType = "uint32"
+	Uint64  FieldType = "uint64"
+	Byte    FieldType = "byte"
+	Rune    FieldType = "rune"
+	Float32 FieldType = "float32"
+	Float64 FieldType = "float64"
+)

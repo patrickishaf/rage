@@ -1,13 +1,12 @@
 package rage
 
 import (
-	"reflect"
 	"testing"
 )
 
 // Make sure it does not add multiple fields with the same name
 func TestAddFieldAddsFieldWithNameAndType(t *testing.T) {
-	schema := NewSchema().AddField("hi", reflect.TypeOf("jupiter"))
+	schema := NewSchema().AddField("hi", String)
 
 	found := false
 
@@ -23,7 +22,7 @@ func TestAddFieldAddsFieldWithNameAndType(t *testing.T) {
 }
 
 func TestAddFieldRejectsDuplicateFields(t *testing.T) {
-	newSchema := NewSchema().AddField("hi", reflect.TypeOf("string")).AddField("hi", reflect.TypeOf("mars"))
+	newSchema := NewSchema().AddField("hi", String).AddField("hi", String)
 
 	counter := 0
 
