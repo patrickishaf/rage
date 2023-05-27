@@ -27,6 +27,9 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 	for _, field := range s.content.fields {
 		/*
 			TODO: If the field is not required, you still need to validate it to ensure that it has all the right properties
+			Right now, this code means that if the current field is not required, you just jump to validating the next field
+
+			I haven't decided if this is good behaviour or not but in the meantime, I'll leave this behaviour like this
 		*/
 		if !field.isRequired {
 			continue
@@ -39,7 +42,7 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 			isValid = false
 			result.Reasons = append(result.Reasons, ValidationReason{
 				Value:   field.name,
-				Message: "the field '" + field.name + "' was not found in the object",
+				Message: buildFieldNotFoundError(field.name),
 			})
 			continue
 		}
@@ -57,7 +60,7 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 			isValid = false
 			result.Reasons = append(result.Reasons, ValidationReason{
 				Value:   field.name,
-				Message: "the field '" + field.name + "' was not found in the object",
+				Message: buildFieldNotFoundError(field.name),
 			})
 			continue
 		}
@@ -78,6 +81,13 @@ func (s *Schema) Validate(obj interface{}) ValidationResult {
 			fmt.Println("the value is not a numeric type")
 		}
 	}
+	// Validate the name of the field
+	// validate the data type of the field
+	// validate the data type of the field
+	// validate the min value of the field
+	// Validate the max value of the field
+	// Validate the min length of the field
+	// Validate the max length of the field
 	result.IsValid = isValid
 	return result
 }
